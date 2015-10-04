@@ -12,6 +12,7 @@
 #import "SVProgressHUD.h"
 #import "SVIndefiniteAnimatedView.h"
 #import "SVRadialGradientLayer.h"
+#import "SVIndefiniteAnimatedImageView.h"
 
 NSString * const SVProgressHUDDidReceiveTouchEventNotification = @"SVProgressHUDDidReceiveTouchEventNotification";
 NSString * const SVProgressHUDDidTouchDownInsideNotification = @"SVProgressHUDDidTouchDownInsideNotification";
@@ -234,7 +235,7 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
 }
 
 + (void)showErrorWithStatus:(NSString*)status{
-    [self showImage:[self sharedView].errorImage status:status];
+    [self showImage:nil status:status];
 }
 
 + (void)showErrorWithStatus:(NSString*)status maskType:(SVProgressHUDMaskType)maskType{
@@ -417,10 +418,12 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
     [CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
     
 	if(string) {
-        if(self.defaultAnimationType == SVProgressHUDAnimationTypeFlat) {
-            SVIndefiniteAnimatedView *indefiniteAnimationView = (SVIndefiniteAnimatedView *)self.indefiniteAnimatedView;
-            indefiniteAnimationView.radius = SVProgressHUDRingRadius;
-            [indefiniteAnimationView sizeToFit];
+        if (!self.spinnerImage) {
+            if(self.defaultAnimationType == SVProgressHUDAnimationTypeFlat) {
+                SVIndefiniteAnimatedView *indefiniteAnimationView = (SVIndefiniteAnimatedView *)self.indefiniteAnimatedView;
+                indefiniteAnimationView.radius = SVProgressHUDRingRadius;
+                [indefiniteAnimationView sizeToFit];
+            }
         }
         
         CGPoint center = CGPointMake((CGRectGetWidth(self.hudView.bounds)/2), 36.0f);
@@ -430,10 +433,12 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
             self.backgroundRingLayer.position = self.ringLayer.position = CGPointMake((CGRectGetWidth(self.hudView.bounds)/2), 36.0f);
         }
 	} else {
-        if(self.defaultAnimationType == SVProgressHUDAnimationTypeFlat) {
-            SVIndefiniteAnimatedView *indefiniteAnimationView = (SVIndefiniteAnimatedView *)self.indefiniteAnimatedView;
-            indefiniteAnimationView.radius = SVProgressHUDRingNoTextRadius;
-            [indefiniteAnimationView sizeToFit];
+        if (!self.spinnerImage) {
+            if(self.defaultAnimationType == SVProgressHUDAnimationTypeFlat) {
+                SVIndefiniteAnimatedView *indefiniteAnimationView = (SVIndefiniteAnimatedView *)self.indefiniteAnimatedView;
+                indefiniteAnimationView.radius = SVProgressHUDRingNoTextRadius;
+                [indefiniteAnimationView sizeToFit];
+            }
         }
         
         CGPoint center = CGPointMake((CGRectGetWidth(self.hudView.bounds)/2), CGRectGetHeight(self.hudView.bounds)/2);
@@ -970,7 +975,10 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
     return activityIndicatorView;
 }
 
-- (SVIndefiniteAnimatedView *)createIndefiniteAnimatedView{
+- (UIView *)createIndefiniteAnimatedView{
+    if (self.spinnerImage) {
+        return [[UIImageView alloc] initWithImage:self.spinnerImage];
+    }
     SVIndefiniteAnimatedView *indefiniteAnimatedView = [[SVIndefiniteAnimatedView alloc] initWithFrame:CGRectZero];
     indefiniteAnimatedView.strokeColor = self.foregroundColorForStyle;
     indefiniteAnimatedView.radius = self.stringLabel.text ? SVProgressHUDRingRadius : SVProgressHUDRingNoTextRadius;
@@ -981,7 +989,12 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
 
 - (UIView *)indefiniteAnimatedView{
     if(_indefiniteAnimatedView == nil){
-        _indefiniteAnimatedView = (self.defaultAnimationType == SVProgressHUDAnimationTypeFlat) ? [self createIndefiniteAnimatedView] : [self createActivityIndicatorView];
+        if (self.spinnerImage) {
+            _indefiniteAnimatedView = [[SVIndefiniteAnimatedImageView alloc] initWithImage:self.spinnerImage];
+        } else {
+            _indefiniteAnimatedView = (self.defaultAnimationType == SVProgressHUDAnimationTypeFlat) ? [self createIndefiniteAnimatedView] : [self createActivityIndicatorView];
+        }
+
     }
     
     return _indefiniteAnimatedView;

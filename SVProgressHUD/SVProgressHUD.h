@@ -58,6 +58,7 @@ typedef NS_ENUM(NSUInteger, SVProgressHUDAnimationType) {
 @property (strong, nonatomic) UIImage *infoImage UI_APPEARANCE_SELECTOR;              // default is the bundled info image provided by Freepik
 @property (strong, nonatomic) UIImage *successImage UI_APPEARANCE_SELECTOR;           // default is the bundled success image provided by Freepik
 @property (strong, nonatomic) UIImage *errorImage UI_APPEARANCE_SELECTOR;             // default is the bundled error image provided by Freepik
+@property (strong, nonatomic) UIImage *spinnerImage UI_APPEARANCE_SELECTOR;
 @property (strong, nonatomic) UIView *viewForExtension UI_APPEARANCE_SELECTOR;        // default is nil, only used if #define SV_APP_EXTENSIONS is set
 
 + (void)setDefaultStyle:(SVProgressHUDStyle)style;                  // default is SVProgressHUDStyleLight

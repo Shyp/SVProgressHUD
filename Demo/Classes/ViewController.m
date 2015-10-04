@@ -18,6 +18,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    [SVProgressHUD appearance].spinnerImage = [UIImage imageNamed:@"Spinner"];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(handleNotification:)
                                                  name:SVProgressHUDWillAppearNotification

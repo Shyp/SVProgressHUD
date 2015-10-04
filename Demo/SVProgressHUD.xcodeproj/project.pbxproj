@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		072D864F1BC1D565001E5C61 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 072D864E1BC1D565001E5C61 /* Media.xcassets */; };
+		072D86521BC1DBEE001E5C61 /* SVIndefiniteAnimatedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 072D86511BC1DBEE001E5C61 /* SVIndefiniteAnimatedImageView.m */; };
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -27,6 +29,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		072D864E1BC1D565001E5C61 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		072D86501BC1DBEE001E5C61 /* SVIndefiniteAnimatedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedImageView.h; sourceTree = "<group>"; };
+		072D86511BC1DBEE001E5C61 /* SVIndefiniteAnimatedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedImageView.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -78,6 +83,7 @@
 				1D3623240D0F684500981E51 /* AppDelegate.h */,
 				1D3623250D0F684500981E51 /* AppDelegate.m */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				072D864E1BC1D565001E5C61 /* Media.xcassets */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -138,6 +144,8 @@
 				B07118271A3264C900C8A614 /* SVIndefiniteAnimatedView.h */,
 				B07118281A3264C900C8A614 /* SVIndefiniteAnimatedView.m */,
 				22D13AB61365FEAC0025FCC9 /* SVProgressHUD.bundle */,
+				072D86501BC1DBEE001E5C61 /* SVIndefiniteAnimatedImageView.h */,
+				072D86511BC1DBEE001E5C61 /* SVIndefiniteAnimatedImageView.m */,
 			);
 			name = SVProgressHUD;
 			path = ../SVProgressHUD;
@@ -197,6 +205,7 @@
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				2899E5220DE3E06400AC0155 /* ViewController.xib in Resources */,
+				072D864F1BC1D565001E5C61 /* Media.xcassets in Resources */,
 				22EBCD19134128130074B281 /* MainWindow-iPad.xib in Resources */,
 				22D13AB71365FEAC0025FCC9 /* SVProgressHUD.bundle in Resources */,
 				2265DEEE14706A8900B3EBF7 /* README.md in Resources */,
@@ -215,6 +224,7 @@
 				B07118291A3264C900C8A614 /* SVIndefiniteAnimatedView.m in Sources */,
 				3CD078EA1A3B809500290D80 /* SVRadialGradientLayer.m in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				072D86521BC1DBEE001E5C61 /* SVIndefiniteAnimatedImageView.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* ViewController.m in Sources */,
 				63ADC4BC1364C1360060E45B /* SVProgressHUD.m in Sources */,
