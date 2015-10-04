@@ -347,8 +347,8 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
 }
 
 - (void)updateHUDFrame{
-    CGFloat hudWidth = 100.0f;
-    CGFloat hudHeight = 100.0f;
+    CGFloat hudWidth = 76.0f;
+    CGFloat hudHeight = 76.0f;
     CGFloat stringHeightBuffer = 20.0f;
     CGFloat stringAndContentHeightBuffer = 80.0f;
     CGRect labelRect = CGRectZero;
@@ -400,6 +400,7 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
             labelRect = CGRectMake(0.0f, labelRectY, hudWidth, stringHeight);
         }
     }
+    
     // Update values on subviews
     self.hudView.bounds = CGRectMake(0.0f, 0.0f, hudWidth, hudHeight);
     [self updateBlurBounds];
