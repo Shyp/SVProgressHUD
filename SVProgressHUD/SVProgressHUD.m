@@ -83,10 +83,6 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
 - (UIColor*)backgroundColorForStyle;
 - (UIImage*)image:(UIImage*)image withTintColor:(UIColor*)color;
 
-/****** Added By Shyp ******/
-@property (nonatomic, readwrite) BOOL isScheduledToBeDismissed;
-- (void)handleScheduledDismissal;
-
 @end
 
 
@@ -850,7 +846,6 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
 }
 
 - (void)showImage:(UIImage*)image status:(NSString*)string duration:(NSTimeInterval)duration{
-    self.isScheduledToBeDismissed = YES;
     self.progress = SVProgressHUDUndefinedProgress;
     [self cancelRingLayerAnimation];
     
@@ -890,17 +885,11 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
     UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, nil);
     UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, string);
     
-    self.fadeOutTimer = [NSTimer timerWithTimeInterval:duration target:self selector:@selector(handleScheduledDismissal) userInfo:nil repeats:NO];
+    self.fadeOutTimer = [NSTimer timerWithTimeInterval:duration target:self selector:@selector(dismiss) userInfo:nil repeats:NO];
     [[NSRunLoop mainRunLoop] addTimer:self.fadeOutTimer forMode:NSRunLoopCommonModes];
 }
 
-- (void)handleScheduledDismissal {
-    self.isScheduledToBeDismissed = NO;
-    [self dismiss];
-}
-
 - (void)dismissWithDelay:(NSTimeInterval)delay{
-    if (self.isScheduledToBeDismissed) return;
     NSDictionary *userInfo = [self notificationUserInfo];
     [[NSNotificationCenter defaultCenter] postNotificationName:SVProgressHUDWillDisappearNotification
                                                         object:nil
