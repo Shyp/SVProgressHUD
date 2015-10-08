@@ -159,6 +159,10 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
     [self sharedView].viewForExtension = view;
 }
 
++ (void)setSpinnerImage:(UIImage *)spinnerImage {
+    [self sharedView].spinnerImage = spinnerImage;
+}
+
 #pragma mark - Show Methods
 
 + (void)show{
@@ -1185,6 +1189,10 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
 }
 
 #pragma mark - UIAppearance Setters
+
+- (void)setSpinnerImage:(UIImage *)spinnerImage {
+    if (!_isInitializing) _spinnerImage = spinnerImage;
+}
 
 - (void)setDefaultStyle:(SVProgressHUDStyle)style{
     if (!_isInitializing) _defaultStyle = style;
